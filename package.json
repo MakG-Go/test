@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bootstrap": "^4.6.0",
     "moment": "^2.29.4",
     "vite-plugin-fonts": "^0.7.0",
     "vue": "^3.3.4",

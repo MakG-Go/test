@@ -16,13 +16,12 @@ img {
 .container,
 header {
 	margin: 0 auto;
-	// padding: 0 1rem;
+	padding: 0 1rem;
 	@media screen and (min-width: 576px) {
 		max-width: 540px;
 	}
 	@media screen and (min-width: 768px) {
 		max-width: 720px;
-		padding: 0;
 	}
 	@media screen and (min-width: 992px) {
 		max-width: 960px;

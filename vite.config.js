@@ -4,11 +4,8 @@ import { VitePluginFonts } from 'vite-plugin-fonts';
 import viteImagemin from 'vite-plugin-imagemin';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 // import picturePlugin from './src/customPLagins/toPicture.js'
-
-
 import path from "path"
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(),
   VitePluginFonts({

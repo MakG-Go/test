@@ -9,12 +9,19 @@
 	border: 1px solid $blue;
 	border-radius: 1em;
 	overflow: hidden;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
 
 	&_img {
 	}
 	&_body {
 		display: flex;
 		flex-direction: column;
+		flex: 1 1 auto;
 		height: 100%;
 		padding: 2em;
 	}
@@ -42,10 +49,11 @@
 	}
 	&_text {
 		font-size: 1.25em;
-		height: 100%;
+		margin-bottom: 2.5em;
 	}
 	&_footnote {
 		display: inline-block;
+		width: max-content;
 		margin-top: auto;
 		padding: 0.4em 1em;
 		background-color: $sky;
