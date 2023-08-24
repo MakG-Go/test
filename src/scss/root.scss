@@ -1,0 +1,36 @@
+$blue: #0c5bef;
+$gray: #a1a7b5;
+$sky: #f0f6fe;
+
+$Regular: "Nunito-Regular", sans-serif;
+$Bold: "Nunito-Bold", sans-serif;
+
+body {
+	font-family: $Regular, sans-serif;
+	font-size: 16px;
+}
+img {
+	width: 100%;
+}
+
+.container,
+header {
+	margin: 0 auto;
+	// padding: 0 1rem;
+	@media screen and (min-width: 576px) {
+		max-width: 540px;
+	}
+	@media screen and (min-width: 768px) {
+		max-width: 720px;
+		padding: 0;
+	}
+	@media screen and (min-width: 992px) {
+		max-width: 960px;
+	}
+	@media screen and (min-width: 1200px) {
+		max-width: 1140px;
+	}
+	@media screen and (min-width: 1400px) {
+		max-width: 1709px;
+	}
+}
