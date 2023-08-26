@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import { VitePluginFonts } from 'vite-plugin-fonts';
 import viteImagemin from 'vite-plugin-imagemin';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-// import picturePlugin from './src/customPLagins/toPicture.js'
 import path from "path"
 
 export default defineConfig({
@@ -37,7 +36,7 @@ export default defineConfig({
       interlaced: false,
     },
     optipng: {
-      optimizationLevel: 7,
+      optimizationLevel: 2,
     },
     mozjpeg: {
       quality: 20,
@@ -70,8 +69,6 @@ export default defineConfig({
     customDomId: '__svg__icons__dom__',
   }),
 
-
-    // picturePlugin(),
 
   ],
   base: "./",
