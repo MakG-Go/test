@@ -1,14 +1,22 @@
 <template>
-  <div>
-    <h1 class="mb-1">Page not foud</h1>
-    <hr />
-    <slot></slot>
-    <router-link class="" :to="{ name: 'home' }">To catalog</router-link>
-  </div>
+    <div>
+        <h1 class="h1">Page not foud</h1>
+        <p class="mb-red">{{ $route.href }}</p>
+        <slot></slot>
+        <router-link @click="hide" :to="{ name: 'home' }"
+            ><button class="btn">На главную</button></router-link
+        >
+    </div>
 </template>
 
 <script>
-export default {};
+export default {
+    methods: {
+        hide() {
+            this.$emit("hide");
+        },
+    },
+};
 </script>
 
 <style>

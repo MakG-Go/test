@@ -4,7 +4,15 @@ import appE404 from "@/components/E404.vue";
 
 const routes = [
     {
+        path: '/',
+        redirect: { name: 'home' }
+    },
+    {
         path: '/news',
+        redirect: { name: 'home' }
+    },
+    {
+        path: '/news/1',
         name: 'home',
         component: News,
         props: { isHomePage: true }
@@ -13,14 +21,18 @@ const routes = [
         path: '/news/:id',
         name: 'news',
         component: News,
-        props: { isHomePage: false }
-        // props: route => ({ isHomePage: false, id: route.params.id })
     },
-    // { path: '/:any(.*)', component: appE404 },
+    { path: '/:any(.*)', component: appE404, name: 'e404' },
 ]
 
 
 export default createRouter({
     routes,
-    history: createWebHistory()
+    history: createWebHistory(),
+    scrollBehavior(to, from, savedPosition) {
+        return savedPosition || new Promise((resolve) => {
+            setTimeout(() => { resolve({ top: 0, behavior: "smooth" }), 200 })
+        })
+
+    },
 })

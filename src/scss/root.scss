@@ -8,13 +8,22 @@ $Bold: "Nunito-Bold", sans-serif;
 body {
 	font-family: $Regular, sans-serif;
 	font-size: 16px;
+
+	@media screen and (max-width: 719px) {
+		font-size: 12px;
+	}
 }
 img {
 	width: 100%;
 }
-
-.container,
-header {
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+}
+.container {
+	width: 100%;
 	margin: 0 auto;
 	padding: 0 1rem;
 	@media screen and (min-width: 576px) {
@@ -31,5 +40,10 @@ header {
 	}
 	@media screen and (min-width: 1400px) {
 		max-width: 1709px;
+	}
+}
+.mb {
+	&-red {
+		margin-bottom: 4.5em;
 	}
 }

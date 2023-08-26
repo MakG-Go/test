@@ -1,7 +1,15 @@
 .news {
 	&_title {
 		position: relative;
-		top: -3em;
+		top: -2em;
+	}
+	&_btn {
+		padding: 1rem 2rem;
+		border-radius: 0.5em;
+		color: $blue;
+		font-size: 1.25em;
+		font-weight: 600;
+		cursor: pointer;
 	}
 }
 .card {
@@ -44,11 +52,8 @@
 	}
 	&_title {
 		margin-bottom: 1rem;
-		color: $blue;
-		font-size: 1.375em;
 	}
 	&_text {
-		font-size: 1.25em;
 		margin-bottom: 2.5em;
 	}
 	&_footnote {
@@ -58,6 +63,5 @@
 		padding: 0.4em 1em;
 		background-color: $sky;
 		border-radius: 3.125em;
-		font-size: 0.875em;
 	}
 }
