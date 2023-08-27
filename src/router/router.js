@@ -5,22 +5,13 @@ import appE404 from "@/components/E404.vue";
 const routes = [
     {
         path: '/',
-        redirect: { name: 'home' }
-    },
-    {
-        path: '/news',
-        redirect: { name: 'home' }
-    },
-    {
-        path: '/news/1',
-        name: 'home',
-        component: News,
-        props: { isHomePage: true }
+        redirect: '/news/1'
     },
     {
         path: '/news/:id',
-        name: 'news',
+        name: 'home',
         component: News,
+
     },
     { path: '/:any(.*)', component: appE404, name: 'e404' },
 ]

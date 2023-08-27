@@ -3,26 +3,28 @@ import Header from "@/components/Header.vue";
 import Footer from "./components/Footer.vue";
 
 export default {
-    props: {
-        isHomePage: Boolean,
-    },
     components: {
         Header,
         Footer,
     },
     data() {
         return {
-            pageCouter: 1,
+            page: 1,
         };
-    },
-    methods: {
-        goNext() {
-            this.pageCouter + 1 <= this.$navData.total ? this.pageCouter++ : "";
-        },
     },
     computed: {
         showBtn() {
-            return this.pageCouter + 1 > this.$navData.total;
+            return this.page + 1 <= this.$navData.total && this.page !== NaN;
+        },
+    },
+    watch: {
+        $route() {
+            this.page = parseInt(
+                this.$router.currentRoute._rawValue.path
+                    .match(/\/([^/]+)$/)
+                    .map((match) => match.slice(1))[0]
+            );
+            console.log(this.page);
         },
     },
 };
@@ -34,14 +36,15 @@ export default {
         <div class="dividing"></div>
         <div class="container mb-red">
             <h1 class="news_title h1">Новости</h1>
-            <router-view :isHomePage="isHomePage"></router-view>
-            <div class="row jf-center" v-show="!showBtn">
+            <router-view :key="$route.path"></router-view>
+            <div class="row jf-center" v-show="showBtn">
                 <router-link
-                    :to="{ name: 'news', params: { id: this.pageCouter } }"
+                    :to="{
+                        name: 'home',
+                        params: { id: this.page + 1 },
+                    }"
                 >
-                    <button class="btn news_btn" @click="goNext">
-                        Загрузить ещё
-                    </button>
+                    <button class="btn news_btn">Загрузить ещё</button>
                 </router-link>
             </div>
         </div>

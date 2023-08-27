@@ -1,7 +1,7 @@
 <script>
 import moment from "moment";
 import global from "@/global/constants.js";
-import E404 from "../components/E404.vue";
+import E404 from "@/components/E404.vue";
 export default {
     components: {
         E404,
@@ -13,7 +13,7 @@ export default {
         };
     },
     methods: {
-        fetchData(url) {
+        async fetchData(url) {
             try {
                 fetch(url)
                     .then((res) => {
@@ -24,49 +24,50 @@ export default {
                     })
                     .catch((error) => {
                         console.error("Error fetching data:", error);
-                        global.URLS.ERROR = error;
-                        this.error = true;
+                        this.$router.push({ name: "home", params: { id: 1 } });
                     });
             } catch (err) {
                 console.error(err);
             }
         },
-        getDeteDay(date) {
+        getDateDay(date) {
             return moment(date).format("DD");
         },
-        getDeteMonth(date) {
+        getDateMonth(date) {
             return moment(date).format("MMMM");
         },
-        getDeteYear(date) {
+        getDateYear(date) {
             return moment(date).format("YYYY");
         },
         hide() {
             this.error = false;
         },
     },
-    mounted() {
-        if (this.$route.params.id !== undefined) {
-            this.fetchData(global.URLS.START_URL + this.$route.params.id);
-        } else {
-            this.fetchData(global.URLS.START_URL);
-        }
-        this.error = false;
-    },
-    watch: {
-        "$route.params.id"() {
-            if (this.$route.params.id !== undefined) {
-                this.fetchData(global.URLS.START_URL + this.$route.params.id);
-            } else {
-                this.fetchData(global.URLS.START_URL);
-            }
-        },
+    created() {
+        this.$watch(
+            () => {
+                this.$route.params;
+            },
+            async () => {
+                const id = parseInt(this.$route.params.id);
+
+                if (id <= this.$navData.total && id !== NaN) {
+                    this.fetchData(
+                        global.URLS.START_URL + this.$route.params.id
+                    );
+                } else {
+                    this.error = true;
+                }
+            },
+            { immediate: true }
+        );
     },
 };
 </script>
 
 <template>
     <div>
-        <ul class="row">
+        <ul class="row" v-if="!error">
             <li
                 class="col-8 col-xs-12"
                 v-for="card in data.items"
@@ -77,14 +78,14 @@ export default {
                     <div class="card_body">
                         <div class="card_date">
                             <p class="card_date-day">
-                                {{ getDeteDay(card.date) }}
+                                {{ getDateDay(card.date) }}
                             </p>
                             <div>
                                 <p class="card_date-others">
-                                    {{ getDeteMonth(card.date) }}
+                                    {{ getDateMonth(card.date) }}
                                 </p>
                                 <p class="card_date-others">
-                                    {{ getDeteYear(card.date) }}
+                                    {{ getDateYear(card.date) }}
                                 </p>
                             </div>
                         </div>
@@ -103,7 +104,7 @@ export default {
                 </article>
             </li>
         </ul>
-        <E404 v-if="error" @hide="hide"></E404>
+        <E404 v-else @hide="hide"></E404>
     </div>
 </template>
 

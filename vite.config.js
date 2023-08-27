@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { VitePluginFonts } from 'vite-plugin-fonts';
-// import viteImagemin from 'vite-plugin-imagemin';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from "path"
 
@@ -27,39 +26,8 @@ export default defineConfig({
       ],
     },
   }),
-  // viteImagemin({
-  //   conversion: [
-  //     { from: 'jpg', to: 'webp' },
-  //   ],
-  //   gifsicle: {
-  //     optimizationLevel: 7,
-  //     interlaced: false,
-  //   },
-  //   optipng: {
-  //     optimizationLevel: 2,
-  //   },
-  //   mozjpeg: {
-  //     quality: 20,
-  //   },
-  //   pngquant: {
-  //     quality: [0.8, 0.9],
-  //     speed: 4,
-  //   },
-  //   svgo: {
-  //     plugins: [
-  //       {
-  //         name: 'removeViewBox',
-  //       },
-  //       {
-  //         name: 'removeEmptyAttrs',
-  //         active: false,
-  //       },
-  //     ],
-  //   },
-  // },
-  // ),
   createSvgIconsPlugin({
-    // Specify the icon folder to be cached
+
     iconDirs: [path.resolve(process.cwd(), 'src/icons')],
 
     symbolId: 'icon-[dir]-[name]',
@@ -84,7 +52,7 @@ export default defineConfig({
   },
   build: {
     emptyOutDir: true,
-    sourcemap: true,
+    sourcemap: false,
     minify: true,
     rollupOptions: {
       output: {
