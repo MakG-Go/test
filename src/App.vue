@@ -24,7 +24,6 @@ export default {
                     .match(/\/([^/]+)$/)
                     .map((match) => match.slice(1))[0]
             );
-            console.log(this.page);
         },
     },
 };

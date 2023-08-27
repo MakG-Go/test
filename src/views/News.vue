@@ -66,7 +66,7 @@ export default {
 </script>
 
 <template>
-    <div>
+    <section>
         <ul class="row" v-if="!error">
             <li
                 class="col-8 col-xs-12"
@@ -105,7 +105,7 @@ export default {
             </li>
         </ul>
         <E404 v-else @hide="hide"></E404>
-    </div>
+    </section>
 </template>
 
 
